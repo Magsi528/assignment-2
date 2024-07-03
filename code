@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+
+const int ROWS = 3;
+const int COLMS = 3;
+
+// Displays matrix elements
+void displayMatrix(const int matrix[][COLMS]) {
+    cout << "Matrix elements are:" << endl;
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLMS; j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+// clears the matrx to zero
+void clearMatrix(int matrix[][COLMS]) {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLMS; j++) {
+            matrix[i][j] = 0;
+        }
+    }
+}
+
+// finds the max number in matrix
+int findMax(const int matrix[][COLMS]) {
+    int max = matrix[0][0];
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLMS; j++) {
+            if (matrix[i][j] > max) {
+                max = matrix[i][j];
+            }
+        }
+    }
+    return max;
+}
+
+// finds the min number in matrix
+int findMin(const int matrix[][COLMS]) {
+    int min = matrix[0][0];
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLMS; j++) {
+            if (matrix[i][j] < min) {
+                min = matrix[i][j];
+            }
+        }
+    }
+    return min;
+}
+
+// finds the sum of matrix
+int calculateSum(const int matrix[][COLMS]) {
+    int sum = 0;
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLMS; j++) {
+            sum += matrix[i][j];
+        }
+    }
+    return sum;
+}
+
+int main() {
+    int myMatrix[ROWS][COLMS] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    // 1  Displays the matrix
+    displayMatrix(myMatrix);
+
+    //  2 Find and display the maximum element
+    int maxElement = findMax(myMatrix);
+    cout << "Maximum element: " << maxElement << endl;
+
+    // 3 Find and display the minimum element
+    int minElement = findMin(myMatrix);
+    cout << "Minimum element: " << minElement << endl;
+
+    // 4 Calculate the sum of the elements
+    int sum = calculateSum(myMatrix);
+    cout << "Sum of elements: " << sum << endl;
+
+    //  5 Clear the matrix
+    clearMatrix(myMatrix);
+
+    // Step 6: Display the cleared matrix
+    cout << "Cleared matrix:" << endl;
+    displayMatrix(myMatrix);
+
+    return 0;
+}
